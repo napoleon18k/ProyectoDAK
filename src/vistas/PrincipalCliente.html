@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Cliente</title>
+  <link rel="stylesheet" href="../assets/css/cliente.css">
+</head>
+<body>
+
+  <!-- ==========================
+       HEADER / BARRA SUPERIOR
+       Contiene botones principales, selector de idioma y perfil
+  =========================== -->
+  <div class="header">
+    <div class="button-wrapper">
+      <button id="btnMapa">Estaciones de carga</button>
+      <div class="msg-alert" id="msgMapa"></div>
+    </div>
+    <div class="button-wrapper">
+      <button id="btnPlanificar">Planificar viajes</button>
+      <div class="msg-alert" id="msgPlanificar"></div>
+    </div>
+    <div class="button-wrapper">
+        <button id="btnVehiculos">Mis vehículos</button>
+      <div class="msg-alert" id="msgVehiculos"></div>
+    </div>
+
+    <div class="idiomas">
+      <span>ES</span><span class="separador">|</span><span>EN</span>
+    </div>
+
+  <img src="../assets/imagenes/user.jpg" alt="Perfil" class="profile-img" id="profileBtn">
+  </div>
+
+  <!-- ==========================
+       IMAGEN DE FONDO PRINCIPAL
+  =========================== -->
+  <div class="full-image"></div>
+
+  <!-- ==========================
+       PANEL DE USUARIO
+       Se muestra/oculta al hacer click en el perfil
+  =========================== -->
+  <div id="userPanel" style="display:none;">
+    <div class="user-info">
+      <div class="user-datos">
+        <p id="nombreUsuario"></p>
+        <p id="correoUsuario"></p>
+        <p id="rolUsuario"></p>
+      </div>
+  <a href="gestionPerfil.php" id="modificarPerfilLink">Modificar perfil</a>
+    </div>
+    <div class="user-images">
+  <img src="../assets/imagenes/viajes.jpg" alt="Imagen 1" class="user-img">
+  <img src="../assets/imagenes/pagos.jpg" alt="Imagen 2" class="user-img">
+    </div>
+    <button id="cerrarSesionBtn">Cerrar sesión</button>
+  </div>
+
+  <!-- ==========================
+       CONTENEDOR DEL MAPA
+       Arranca oculto, se muestra al hacer click en "Estaciones de carga"
+  =========================== -->
+  <div id="mapa" style="display:none;"></div>
+
+  <!-- ==========================
+       SCRIPT PRINCIPAL
+  =========================== -->
+  <script>
+    let map;
+    let boundsUruguay;
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("mapa"), { zoom: 6 });
+      boundsUruguay = new google.maps.LatLngBounds(
+        { lat: -35.5, lng: -58.5 },
+        { lat: -30.0, lng: -53.0 }
+      );
+      map.fitBounds(boundsUruguay);
+
+  fetch('../api/getEstaciones.php')
+        .then(res => res.json())
+        .then(estaciones => {
+          estaciones.forEach(est => {
+            const pos = { lat: parseFloat(est.lat), lng: parseFloat(est.lng) };
+            const marker = new google.maps.Marker({
+              position: pos,
+              map: map,
+              title: est.nombre,
+              icon: { url: '../assets/imagenes/iconomapa.png', scaledSize: new google.maps.Size(40, 40) }
+            });
+
+            const listaCargadores = est.cargadores_formateados
+              .split('\n')
+              .map(linea => `<li>${linea}</li>`).join('');
+
+            const infoWindow = new google.maps.InfoWindow({
+              content: `<h3>${est.nombre}</h3>
+                        <p>${est.direccion}</p>
+                        <p>${est.departamento}</p>
+                        <ul>${listaCargadores}</ul>`
+            });
+
+            marker.addListener('click', () => infoWindow.open(map, marker));
+          });
+        })
+        .catch(err => console.error('Error cargando estaciones:', err));
+    }
+
+    function mostrarMensaje(idMsg, texto) {
+      const msgDiv = document.getElementById(idMsg);
+      msgDiv.textContent = texto;
+      msgDiv.style.opacity = 1;
+      setTimeout(() => { msgDiv.style.opacity = 0; }, 3000);
+    }
+
+    const profileBtn = document.getElementById('profileBtn');
+    let tooltip = document.createElement('div');
+    tooltip.className = 'profile-tooltip';
+    document.body.appendChild(tooltip);
+
+    function mostrarTooltip(texto) {
+      const rect = profileBtn.getBoundingClientRect();
+      tooltip.textContent = texto;
+      tooltip.style.left = rect.left + rect.width/2 - tooltip.offsetWidth/2 + "px";
+      tooltip.style.top = rect.bottom + 5 + "px";
+      tooltip.style.opacity = 1;
+      tooltip.style.transform = "translateY(0)";
+    }
+
+    function ocultarTooltip() {
+      tooltip.style.opacity = 0;
+      tooltip.style.transform = "translateY(5px)";
+    }
+
+  fetch('../api/check_session.php')
+      .then(res => res.json())
+      .then(data => {
+        const userPanel = document.getElementById('userPanel');
+        const nombreUsuario = document.getElementById('nombreUsuario');
+        const correoUsuario = document.getElementById('correoUsuario');
+        const rolUsuario = document.getElementById('rolUsuario');
+
+        if (!data.loggedIn) {
+          profileBtn.addEventListener('click', () => { window.location.href = 'login.html'; }); // Si login.html está en src/vistas, la ruta está bien
+          profileBtn.addEventListener('mouseover', () => mostrarTooltip('Login'));
+          profileBtn.addEventListener('mouseout', ocultarTooltip);
+          document.getElementById('btnMapa').addEventListener('click', () => mostrarMensaje('msgMapa','⚠️ Debes iniciar sesión'));
+          document.getElementById('btnPlanificar').addEventListener('click', () => mostrarMensaje('msgPlanificar','⚠️ Debes iniciar sesión'));
+          document.getElementById('btnVehiculos').addEventListener('click', () => mostrarMensaje('msgVehiculos','⚠️ Debes iniciar sesión'));
+        } else {
+          nombreUsuario.textContent = `Usuario: ${data.usuario}`;
+          correoUsuario.textContent = `Correo: ${data.correo}`;
+          rolUsuario.textContent = `Rol: ${data.rol}`;
+
+          profileBtn.addEventListener('click', () => {
+            userPanel.style.display = userPanel.style.display === 'none' ? 'block' : 'none';
+          });
+          profileBtn.addEventListener('mouseover', () => mostrarTooltip('Perfil'));
+          profileBtn.addEventListener('mouseout', ocultarTooltip);
+
+          document.getElementById('cerrarSesionBtn').addEventListener('click', () => {
+            fetch('../api/logout.php').then(() => window.location.reload());
+          });
+
+          document.getElementById('modificarPerfilLink').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'gestionPerfil.php'; // Si gestionPerfil.php está en src/vistas, la ruta está bien
+          });
+
+          document.getElementById('btnMapa').addEventListener('click', () => {
+            const mapaDiv = document.getElementById('mapa');
+            const visible = mapaDiv.style.display === 'none' ? 'block' : 'none';
+            mapaDiv.style.display = visible;
+            if (visible === 'block') {
+              google.maps.event.trigger(map, 'resize');
+              map.fitBounds(boundsUruguay);
+            }
+          });
+
+          document.getElementById('btnPlanificar').addEventListener('click', () => {
+            window.location.href = 'viajeCliente.html';
+          });
+          document.getElementById('btnVehiculos').addEventListener('click', () => {
+            window.location.href = 'gestionVehiculoscliente.html';
+          });
+        }
+      })
+      .catch(err => console.error('Error verificando sesión:', err));
+
+    window.addEventListener('load', initMap);
+  </script>
+
+  <!-- Google Maps API -->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4HgNqmymEub5LY68nN-s-ONF-i931SCE&callback=initMap">
+  </script>
+
+</body>
+</html>

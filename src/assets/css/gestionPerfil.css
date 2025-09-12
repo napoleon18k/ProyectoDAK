@@ -1,0 +1,98 @@
+body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    .perfil-container {
+      display: flex;
+      max-width: 900px;
+      margin: 50px auto;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .foto-perfil {
+      flex: 1;
+      background-color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .foto-perfil img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 12px;
+    }
+
+    .datos-perfil {
+      flex: 2;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .datos-perfil h2 {
+      margin-bottom: 15px;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .datos-perfil p {
+      margin: 8px 0;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .botones-perfil {
+      margin-top: 25px;
+    }
+
+    .botones-perfil button {
+      padding: 12px 20px;
+      margin-right: 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    #modificarPerfilBtn {
+      background-color: #007bff;
+      color: white;
+    }
+
+    #modificarPerfilBtn:hover {
+      background-color: #0056b3;
+    }
+
+    #eliminarPerfilBtn {
+      background-color: #ff4c4c;
+      color: white;
+    }
+
+    #eliminarPerfilBtn:hover {
+      background-color: #e04343;
+    }
+
+    @media (max-width: 768px) {
+      .perfil-container {
+        flex-direction: column;
+      }
+
+      .foto-perfil, .datos-perfil {
+        width: 100%;
+      }
+
+      .botones-perfil button {
+        margin-bottom: 10px;
+        width: 100%;
+      }
+    }

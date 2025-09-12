@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registro de Usuario</title>
+<link rel="stylesheet" href="../assets/css/registro.css">
+</head>
+
+<body>
+
+  <form id="registroForm" method="POST" action="../api/api.php">
+    <h2>Crear Cuenta</h2>
+
+    <label for="usuario">Nombre de usuario</label>
+    <input type="text" id="usuario" name="usuario" placeholder="Usuario" required autocomplete="username" />
+
+    <label for="email">Correo electrónico</label>
+    <input type="email" id="email" name="email" placeholder="usuario@correo.com" required autocomplete="email" />
+
+
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" name="password" placeholder="Contraseña" required autocomplete="new-password" />
+
+    <div id="mensajeDiv"></div>
+
+    <button type="submit">Registrarse</button>
+
+  <!-- Links debajo del formulario -->
+    <div class="form-links">
+  <a href="login.html">Volver</a> <!-- Si login.html está en src/vistas, la ruta está bien -->
+    </div>
+  </form>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('registroForm');
+      const mensajeDiv = document.getElementById('mensajeDiv');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const usuario = document.getElementById('usuario').value.trim();
+        const correo = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        // Validación básica: solo letras, números y guion bajo
+        const regex = /^[a-zA-Z0-9_]+$/;
+        if (!regex.test(usuario)) {
+          mensajeDiv.textContent = "¡Error! El nombre de usuario solo puede contener letras, números y guion bajo.";
+          mensajeDiv.className = "";
+          return;
+        }
+
+        // Siempre rol 'cliente' al registrar
+        const params = new URLSearchParams();
+        params.append('insertar', '1');
+        params.append('usuario', usuario);
+        params.append('correo', correo);
+        params.append('password', password);
+        params.append('rol', 'cliente');
+
+  fetch('../api/api.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: params.toString()
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+              mensajeDiv.textContent = "Registro exitoso, redirigiendo al login...";
+              mensajeDiv.className = "success";
+              setTimeout(() => {
+                window.location.href = 'login.html'; // Si login.html está en src/vistas, la ruta está bien
+              }, 1500);
+            } else {
+              mensajeDiv.textContent = data.error || 'Error al registrar usuario.';
+              mensajeDiv.className = "";
+            }
+          })
+          .catch(() => {
+            mensajeDiv.textContent = "Error de comunicación con el servidor.";
+            mensajeDiv.className = "";
+          });
+      });
+    });
+  </script>
+
+</body>
+
+</html>
+

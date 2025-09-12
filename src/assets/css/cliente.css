@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Header negro fijo encima de la imagen */
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #000;
+  padding: 12px 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 300;
+}
+
+.header button {
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 6px 10px;
+  transition: color 0.3s;
+}
+
+.header button:hover {
+  color: #ffcc00;
+}
+
+.idiomas {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: white;
+}
+
+.idiomas span {
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.idiomas span:hover {
+  color: #ffcc00;
+}
+
+.idiomas .separador {
+  cursor: default;
+}
+
+/* Imagen de perfil */
+.profile-img {
+  width: 40px;  
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* Tooltip debajo de la imagen de perfil */
+.profile-tooltip {
+  position: absolute;
+  background-color: rgba(0,0,0,0.8);
+  color: #fff;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  transform: translateY(5px);
+  z-index: 400;
+}
+
+/* Panel de usuario más grande y estilizado */
+#userPanel {
+  display: none;
+  position: absolute;
+  top: 50px; 
+  right: 20px;
+  width: 400px; 
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 25px;
+  z-index: 200;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  font-size: 15px;
+}
+
+/* Contenedor de datos de usuario y link de modificar perfil */
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Datos de usuario */
+.user-datos p {
+  margin: 5px 0;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* Link de modificar perfil */
+#modificarPerfilLink {
+  color: #007bff; /* azul */
+  text-decoration: underline;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+#modificarPerfilLink:hover {
+  color: #0056b3; /* azul más oscuro al pasar el mouse */
+}
+
+/* Contenedor de imágenes del usuario */
+.user-images {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Imágenes del usuario */
+.user-img {
+  width: 100px; 
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.user-img:hover {
+  transform: scale(1.1);
+}
+
+/* Botón de cerrar sesión */
+#cerrarSesionBtn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff4c4c;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#cerrarSesionBtn:hover {
+  background-color: #e04343;
+}
+
+/* ===========================
+   CONTENEDOR DE LA IMAGEN PRINCIPAL
+=========================== */
+.full-image {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url('../imagenes/divprincipal.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ===========================
+   MAPA
+=========================== */
+#mapa {
+  display: none;
+  position: absolute;
+  top: 0;                      
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  border: 2px solid black;
+}
+
+/* Mensaje de alerta debajo del botón */
+.msg-alert {
+  color: #fff;
+  background-color: #ff4c4c;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 13px;
+  margin-top: 5px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  position: absolute;
+}
+
+/* Cada botón envuelto para posicionar mensaje */
+.button-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #userPanel {
+    width: 90%;
+    right: 5%;
+    top: 70px;
+  }
+
+  .user-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .user-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  #modificarPerfilLink {
+    width: 100%;
+  }
+}

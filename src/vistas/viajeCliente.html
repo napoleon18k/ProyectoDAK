@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planificar Viaje</title>
+  <link rel="stylesheet" href="../assets/css/viajeCliente.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Planificar Viaje</h1>
+    <div class="select-vehiculo">
+      <label for="auto">Selecciona tu vehículo</label>
+      <select id="auto" name="auto">
+        <option value="">Cargando vehículos...</option>
+      </select>
+    </div>
+    <div id="map"></div>
+    <div class="botones">
+      <button id="calcularBtn" style="display:none;">Calcular ruta y estaciones</button>
+      <button id="cancelarBtn" style="display:none; margin-left:10px; background:#f00; color:#fff;">Cancelar origen/destino</button>
+    </div>
+    <div id="resultado" class="result" style="display:none;"></div>
+    <div id="infoClick" style="margin-top:16px;"></div>
+  </div>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4HgNqmymEub5LY68nN-s-ONF-i931SCE&callback=initMap"></script>
+  <script>
+let map;
+let origenMarker = null;
+let destinoMarker = null;
+let origenCoords = null;
+let destinoCoords = null;
+let clickCount = 0;
+
+// Inicializar el mapa
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 6,
+    center: { lat: -33.0, lng: -56.0 },
+    mapTypeId: 'roadmap'
+  });
+
+  map.addListener('click', function(e) {
+    document.getElementById('cancelarBtn').style.display = 'block';
+    if (!document.getElementById('auto').value) {
+      document.getElementById('infoClick').textContent = 'Selecciona tu vehículo primero.';
+      return;
+    }
+    if (clickCount === 0) {
+      if (origenMarker) origenMarker.setMap(null);
+      origenCoords = e.latLng;
+      origenMarker = new google.maps.Marker({
+        position: origenCoords,
+        map: map,
+        label: 'O'
+      });
+      document.getElementById('infoClick').textContent = 'Origen seleccionado. Haz click en el destino.';
+      clickCount++;
+    } else if (clickCount === 1) {
+      if (destinoMarker) destinoMarker.setMap(null);
+      destinoCoords = e.latLng;
+      destinoMarker = new google.maps.Marker({
+        position: destinoCoords,
+        map: map,
+        label: 'D'
+      });
+      document.getElementById('infoClick').textContent = 'Destino seleccionado.';
+      document.getElementById('calcularBtn').style.display = 'block';
+      clickCount++;
+    }
+  });
+
+  // Botón cancelar
+  document.getElementById('cancelarBtn').addEventListener('click', function() {
+    if (origenMarker) origenMarker.setMap(null);
+    if (destinoMarker) destinoMarker.setMap(null);
+    origenMarker = null;
+    destinoMarker = null;
+    origenCoords = null;
+    destinoCoords = null;
+    document.getElementById('calcularBtn').style.display = 'none';
+    document.getElementById('cancelarBtn').style.display = 'none';
+    document.getElementById('infoClick').textContent = '';
+    clickCount = 0;
+  });
+}
+
+// Cargar vehículos del usuario
+window.addEventListener('DOMContentLoaded', () => {
+  fetch('../api/apiVehiculos.php?listar=1')
+    .then(res => res.json())
+    .then(autos => {
+      const autoSelect = document.getElementById('auto');
+      autoSelect.innerHTML = '<option value="">Selecciona tu vehículo</option>';
+      autos.forEach(a => {
+        autoSelect.innerHTML += `<option value="${a.id}" data-autonomia="${a.autonomia}">${a.marca} ${a.modelo} (${a.autonomia} km)</option>`;
+      });
+    });
+});
+
+window.initMap = initMap;
+  </script>
+</body>
+</html>
