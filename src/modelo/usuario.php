@@ -69,7 +69,7 @@ class Usuario
     // Login seguro
     public function login($usuario, $password)
     {
-        $sql = "SELECT password, rol FROM usuarios WHERE usuario = ?";
+        $sql = "SELECT id, password, rol FROM usuarios WHERE usuario = ?";
         $stmt = $this->conexion->prepare($sql);
         $stmt->execute([$usuario]);
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -77,7 +77,8 @@ class Usuario
         if ($resultado && password_verify($password, $resultado['password'])) {
             return [
                 'success' => true,
-                'rol' => $resultado['rol']
+                'rol' => $resultado['rol'],
+                'id_usuario' => $resultado['id']
             ];
         }
 

@@ -5,11 +5,13 @@ Proyecto web con API en PHP y frontend HTML/CSS/JS, dockerizado con Docker Compo
 ## Estructura del proyecto
 
 PROYECTO_DOCKER/
-├── docker/
 ├── src/
 │ ├── api/
 │ ├── controladores/
 │ ├── modelo/
 │ ├── vistas/
 │ └── assets/
-└── docker-compose.yml
+├──docker-compose.yml
+├──.env
+├──.htaccess
+├──Dockerfile

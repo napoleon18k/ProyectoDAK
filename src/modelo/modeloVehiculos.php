@@ -15,13 +15,13 @@ class Vehiculos
    public function insertarVehiculos($marca, $modelo, $ano, $matricula, $autonomia, $tipo_conector)
 {
 
-
-$usuario_duenio = $_SESSION['usuario']; 
-
-
+    if (!isset($_SESSION['id_usuario'])) {
+        return false;
+    }
+    $id_duenio = $_SESSION['id_usuario'];
     $sql = "INSERT INTO vehiculos (marca, modelo, ano, matricula, autonomia, tipo_conector, duenio) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $this->conexion->prepare($sql);
-    return $stmt->execute([$marca, $modelo, $ano, $matricula, $autonomia, $tipo_conector, $usuario_duenio]);
+    return $stmt->execute([$marca, $modelo, $ano, $matricula, $autonomia, $tipo_conector, $id_duenio]);
 }
 
    public function eliminarVehiculos($id)
@@ -39,9 +39,15 @@ $usuario_duenio = $_SESSION['usuario'];
     }
 
  public function listarVehiculos() {
-        $stmt = $this->conexion->query("SELECT * FROM vehiculos");
-        return $stmt->fetchAll(PDO::FETCH_ASSOC); // devolvemos array asociativo
+        if (!isset($_SESSION['id_usuario'])) {
+            return [];
         }
+        $id_duenio = $_SESSION['id_usuario'];
+        $sql = "SELECT * FROM vehiculos WHERE duenio = ?";
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->execute([$id_duenio]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 }
 

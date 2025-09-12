@@ -7,7 +7,8 @@ try {
     // Conexión a la base de datos
     $conexion = conexion();
 
-    $stmt = $conexion->query("SELECT nombre, direccion, departamento, lat, lng, cargadores FROM estaciones");
+    // Incluimos el id en la consulta
+    $stmt = $conexion->query("SELECT id, nombre, direccion, departamento, lat, lng, cargadores FROM estaciones");
     $estaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Convertimos el JSON de cargadores a array y generamos un campo formateado

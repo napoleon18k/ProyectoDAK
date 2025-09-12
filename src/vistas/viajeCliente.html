@@ -1,76 +1,143 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html> <!-- tipo de documento, dice que es HTML5 -->
+<html lang="es"> <!-- arranca el html y aclara que el idioma es español -->
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"> <!-- para que se vean bien los acentos y ñ -->
+  <!-- esto hace que la página se vea bien en celulares -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Planificar Viaje</title>
+  <title>Planificar Viaje</title> <!-- título de la pestaña -->
+  <!-- estilos aparte para esta página -->
   <link rel="stylesheet" href="../assets/css/viajeCliente.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Planificar Viaje</h1>
+  <div class="container"> <!-- contenedor principal -->
+    <h1>Planificar Viaje</h1> <!-- título grande en la página -->
+
+    <!-- combo para elegir un auto -->
     <div class="select-vehiculo">
-      <label for="auto">Selecciona tu vehículo</label>
-      <select id="auto" name="auto">
-        <option value="">Cargando vehículos...</option>
+      <label for="auto">Selecciona tu vehículo</label> <!-- etiqueta para el combo -->
+      <select id="auto" name="auto"> <!-- select donde aparecen los autos -->
+        <option value="">Cargando vehículos...</option> <!-- mensaje mientras carga -->
       </select>
     </div>
-    <div id="map"></div>
+
+    <!-- acá se dibuja el mapa de Google -->
+    <div id="map"></div> <!-- contenedor vacío, Google Maps lo llena -->
+
+    <!-- botones para interactuar -->
     <div class="botones">
-      <button id="calcularBtn" style="display:none;">Calcular ruta y estaciones</button>
-      <button id="cancelarBtn" style="display:none; margin-left:10px; background:#f00; color:#fff;">Cancelar origen/destino</button>
+      <button id="calcularBtn" style="display:none;">Calcular ruta y estaciones</button> <!-- aparece cuando ya hay origen/destino -->
+      <button id="cancelarBtn" style="display:none; margin-left:10px; background:#f00; color:#fff;">Cancelar origen/destino</button> <!-- borra todo -->
+      <button id="reservarBtn" style="display:none;">Reservar y guardar viaje</button> <!-- guarda viaje en BD -->
+      <button id="volverBtn" style="margin-left:10px; background:#555; color:#fff;">Volver a Principal</button> <!-- vuelve a menú -->
     </div>
+
+    <!-- donde se muestran resultados como distancia y paradas -->
     <div id="resultado" class="result" style="display:none;"></div>
+    <!-- mensajito que aparece cuando clickeás en el mapa -->
     <div id="infoClick" style="margin-top:16px;"></div>
   </div>
+
+  <!-- script de google maps -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4HgNqmymEub5LY68nN-s-ONF-i931SCE&callback=initMap"></script>
+
   <script>
-let map;
-let origenMarker = null;
-let destinoMarker = null;
-let origenCoords = null;
-let destinoCoords = null;
-let clickCount = 0;
+let map; // el mapa en sí
+let boundsUruguay; // para que el mapa arranque centrado en Uruguay
+let origenMarker = null; // marcador azul (origen)
+let destinoMarker = null; // marcador rojo (destino)
+let origenCoords = null; // coordenadas del origen
+let destinoCoords = null; // coordenadas del destino
+let clickCount = 0; // cuenta si ya elegiste origen/destino
+let selectedAuto = 0; // guarda la autonomía del auto elegido
+let estaciones = []; // estaciones que vienen de la base
+let directionsService = null; // servicio de rutas de google
+let directionsRenderer = null; // dibuja la ruta en el mapa
+let paradasMarkers = []; // marcadores de paradas sugeridas
+let datosViajeReserva = null; // datos para guardar el viaje
 
-// Inicializar el mapa
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 6,
-    center: { lat: -33.0, lng: -56.0 },
-    mapTypeId: 'roadmap'
-  });
+  // arranca el mapa
+  map = new google.maps.Map(document.getElementById("map"), { zoom: 6 });
+  boundsUruguay = new google.maps.LatLngBounds( // límites para centrar en Uruguay
+    { lat: -35.5, lng: -58.5 }, // punto suroeste
+    { lat: -30.0, lng: -53.0 }  // punto noreste
+  );
+  map.fitBounds(boundsUruguay); // ajusta el zoom a esos límites
 
+  // inicializa direcciones
+  directionsService = new google.maps.DirectionsService(); // pide rutas
+  directionsRenderer = new google.maps.DirectionsRenderer({ map: map }); // dibuja en el mapa
+
+  // carga estaciones desde el backend
+  fetch('../api/getEstaciones.php')
+    .then(res => res.json()) // convierte respuesta en JSON
+    .then(data => {
+      estaciones = data; // guarda las estaciones
+      estaciones.forEach(est => {
+        // crea un marcador en cada estación
+        const pos = { lat: parseFloat(est.lat), lng: parseFloat(est.lng) }; // ubicación
+        const marker = new google.maps.Marker({
+          position: pos,
+          map: map,
+          title: est.nombre, // aparece cuando pasás el mouse
+          icon: { url: '../assets/imagenes/iconomapa.png', scaledSize: new google.maps.Size(40, 40) } // ícono personalizado
+        });
+
+        // lista de cargadores que tiene cada estación
+        const listaCargadores = est.cargadores_formateados
+          ? est.cargadores_formateados.split('\n').map(linea => `<li>${linea}</li>`).join('')
+          : '';
+
+        // ventanita que aparece al hacer click en la estación
+        const infoWindow = new google.maps.InfoWindow({
+          content: `<h3>${est.nombre}</h3>
+                    <p>${est.direccion}</p>
+                    <p>${est.departamento}</p>
+                    <ul>${listaCargadores}</ul>`
+        });
+
+        marker.addListener('click', () => infoWindow.open(map, marker)); // abre ventanita al clickear
+      });
+    })
+    .catch(err => console.error('Error cargando estaciones:', err)); // si falla la carga
+
+  // evento: cuando clickeás en el mapa
   map.addListener('click', function(e) {
-    document.getElementById('cancelarBtn').style.display = 'block';
+    document.getElementById('cancelarBtn').style.display = 'block'; // aparece botón cancelar
     if (!document.getElementById('auto').value) {
+      // si no elegiste auto, te avisa
       document.getElementById('infoClick').textContent = 'Selecciona tu vehículo primero.';
       return;
     }
     if (clickCount === 0) {
-      if (origenMarker) origenMarker.setMap(null);
-      origenCoords = e.latLng;
-      origenMarker = new google.maps.Marker({
+      // primer click = origen
+      if (origenMarker) origenMarker.setMap(null); // borra si ya había
+      origenCoords = e.latLng; // guarda coordenadas
+      origenMarker = new google.maps.Marker({ // pone marcador azul
         position: origenCoords,
         map: map,
-        label: 'O'
+        label: 'O',
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 8, fillColor: '#00f', fillOpacity: 1, strokeWeight: 2, strokeColor: '#fff' }
       });
       document.getElementById('infoClick').textContent = 'Origen seleccionado. Haz click en el destino.';
       clickCount++;
     } else if (clickCount === 1) {
-      if (destinoMarker) destinoMarker.setMap(null);
-      destinoCoords = e.latLng;
-      destinoMarker = new google.maps.Marker({
+      // segundo click = destino
+      if (destinoMarker) destinoMarker.setMap(null); // borra si ya había
+      destinoCoords = e.latLng; // guarda coordenadas
+      destinoMarker = new google.maps.Marker({ // pone marcador rojo
         position: destinoCoords,
         map: map,
-        label: 'D'
+        label: 'D',
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 8, fillColor: '#f00', fillOpacity: 1, strokeWeight: 2, strokeColor: '#fff' }
       });
-      document.getElementById('infoClick').textContent = 'Destino seleccionado.';
-      document.getElementById('calcularBtn').style.display = 'block';
+      document.getElementById('infoClick').textContent = 'Destino seleccionado. Pulsa "Calcular ruta y estaciones".';
+      document.getElementById('calcularBtn').style.display = 'block'; // aparece botón calcular
       clickCount++;
     }
   });
 
-  // Botón cancelar
+  // botón cancelar limpia todo
   document.getElementById('cancelarBtn').addEventListener('click', function() {
     if (origenMarker) origenMarker.setMap(null);
     if (destinoMarker) destinoMarker.setMap(null);
@@ -80,25 +147,175 @@ function initMap() {
     destinoCoords = null;
     document.getElementById('calcularBtn').style.display = 'none';
     document.getElementById('cancelarBtn').style.display = 'none';
-    document.getElementById('infoClick').textContent = '';
-    clickCount = 0;
+    document.getElementById('infoClick').textContent = ''; // borra texto
+    clickCount = 0; // resetea
+    directionsRenderer.set('directions', null); // borra ruta
+    document.getElementById('resultado').style.display = 'none';
+    document.getElementById('resultado').innerHTML = '';
+    paradasMarkers.forEach(m => m.setMap(null)); // borra paradas
+    paradasMarkers = [];
+  });
+
+  // botón volver a la página principal
+  document.getElementById('volverBtn').addEventListener('click', function() {
+    window.location.href = 'PrincipalCliente.html'; // te manda a esa página
   });
 }
 
-// Cargar vehículos del usuario
+// carga los autos del usuario
 window.addEventListener('DOMContentLoaded', () => {
-  fetch('../api/apiVehiculos.php?listar=1')
-    .then(res => res.json())
+  fetch('../api/apiVehiculos.php?listar=1') // pide autos al backend
+    .then(res => res.json()) // convierte a JSON
     .then(autos => {
       const autoSelect = document.getElementById('auto');
-      autoSelect.innerHTML = '<option value="">Selecciona tu vehículo</option>';
+      autoSelect.innerHTML = '<option value="">Selecciona tu vehículo</option>'; // primer opción
       autos.forEach(a => {
+        // mete cada auto en el select
         autoSelect.innerHTML += `<option value="${a.id}" data-autonomia="${a.autonomia}">${a.marca} ${a.modelo} (${a.autonomia} km)</option>`;
       });
     });
+
+  // guarda la autonomía del auto elegido
+  document.getElementById('auto').addEventListener('change', function() {
+    const val = this.options[this.selectedIndex].getAttribute('data-autonomia');
+    selectedAuto = val ? parseFloat(val) : 0; // si hay valor, lo guarda
+  });
 });
 
-window.initMap = initMap;
+// calcular ruta y sugerir paradas
+document.getElementById('calcularBtn').addEventListener('click', function() {
+  if (!origenCoords || !destinoCoords || !selectedAuto) return; // si falta algo, no hace nada
+  directionsRenderer.set('directions', null); // limpia ruta anterior
+  paradasMarkers.forEach(m => m.setMap(null)); // borra paradas
+  paradasMarkers = [];
+
+  // pide ruta a Google
+  directionsService.route({
+    origin: origenCoords,
+    destination: destinoCoords,
+    travelMode: google.maps.TravelMode.DRIVING
+  }, function(response, status) {
+    if (status !== 'OK') {
+      // si falla el cálculo de ruta
+      const resultadoDiv = document.getElementById('resultado');
+      resultadoDiv.style.display = 'block';
+      resultadoDiv.innerHTML = `<b>Error:</b> No se pudo calcular la ruta.`;
+      return;
+    }
+
+    // dibuja la ruta en el mapa
+    directionsRenderer.setDirections(response);
+    const routePath = response.routes[0].overview_path; // puntos del camino
+    const totalDistance = response.routes[0].legs[0].distance.value / 1000; // distancia en km
+
+    const resultadoDiv = document.getElementById('resultado');
+    resultadoDiv.style.display = 'block';
+
+    // si el auto llega sin parar
+    if (totalDistance <= selectedAuto) {
+      resultadoDiv.innerHTML = `<b>Distancia total:</b> ${totalDistance.toFixed(1)} km<br>Autonomía suficiente para llegar al destino. No es necesario parar.`;
+      document.getElementById('reservarBtn').style.display = 'inline-block';
+      datosViajeReserva = { id_vehiculo: parseInt(document.getElementById('auto').value,10), id_estacion: null };
+      return;
+    }
+
+    // lógica para sugerir paradas si no llega directo
+    const margenSeguridad = 0.9; // deja un 10% de margen
+    let autonomiaRestante = selectedAuto * margenSeguridad;
+    let estacionesSugeridas = []; // lista de estaciones elegidas
+    let ultimaPos = routePath[0]; // punto inicial
+    let ultimaEstacion = null;
+
+    for (let i = 1; i < routePath.length; i++) {
+      const curr = routePath[i]; // punto actual
+      const tramo = google.maps.geometry.spherical.computeDistanceBetween(ultimaPos, curr)/1000; // calcula distancia
+      autonomiaRestante -= tramo; // resta autonomía
+      ultimaPos = curr; // actualiza posición
+
+      if (autonomiaRestante <= 0) {
+        // busca la estación más cercana
+        let estCercana = null;
+        let minDist = Infinity;
+        estaciones.forEach(est => {
+          const estPos = new google.maps.LatLng(est.lat, est.lng);
+          const dEst = google.maps.geometry.spherical.computeDistanceBetween(curr, estPos)/1000;
+          if (dEst <= 10 && dEst < minDist) {
+            minDist = dEst;
+            estCercana = est;
+          }
+        });
+
+        if (!estCercana && ultimaEstacion) estCercana = ultimaEstacion;
+
+        if (estCercana && (estacionesSugeridas.length === 0 || estacionesSugeridas[estacionesSugeridas.length-1].id !== estCercana.id)) {
+          estacionesSugeridas.push(estCercana);
+          autonomiaRestante = selectedAuto * margenSeguridad; // resetea autonomía
+          ultimaPos = new google.maps.LatLng(estCercana.lat, estCercana.lng);
+          ultimaEstacion = estCercana;
+
+          // pone marcador verde de parada
+          const marker = new google.maps.Marker({
+            position: ultimaPos,
+            map: map,
+            label: `${estacionesSugeridas.length}`, // número de parada
+            icon: { path: google.maps.SymbolPath.CIRCLE, scale: 8, fillColor: '#0a0', fillOpacity: 1, strokeWeight: 2, strokeColor: '#fff' }
+          });
+          paradasMarkers.push(marker);
+        }
+      }
+    }
+
+    // muestra resultados
+    if (estacionesSugeridas.length === 0) {
+      resultadoDiv.innerHTML = `<b>Distancia total:</b> ${totalDistance.toFixed(1)} km<br>No hay estaciones disponibles en la ruta para hacer paradas preventivas.`;
+      document.getElementById('reservarBtn').style.display = 'none';
+      datosViajeReserva = null;
+    } else {
+      resultadoDiv.innerHTML = `<b>Distancia total:</b> ${totalDistance.toFixed(1)} km<br><b>Paradas recomendadas:</b>`;
+      estacionesSugeridas.forEach((est,index) => {
+        resultadoDiv.innerHTML += `<div class="station"><b>${index+1}. ${est.nombre}</b><br>${est.direccion}<br>${est.departamento}</div>`;
+      });
+      document.getElementById('reservarBtn').style.display = 'inline-block';
+      datosViajeReserva = { id_vehiculo: parseInt(document.getElementById('auto').value,10), id_estacion: estacionesSugeridas[0].id };
+    }
+  });
+});
+
+// botón reservar guarda el viaje
+const reservarBtn = document.getElementById('reservarBtn');
+reservarBtn.addEventListener('click', function() {
+  if (!datosViajeReserva) return;
+  guardarViajeYReserva(datosViajeReserva.id_vehiculo, datosViajeReserva.id_estacion);
+});
+
+// función que manda el viaje al backend
+function guardarViajeYReserva(idVehiculo, idEstacion) {
+  reservarBtn.disabled = true; // desactiva botón
+  reservarBtn.textContent = 'Guardando...'; // cambia texto
+  fetch('../api/apiViaje.php', { // manda datos al backend
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id_vehiculo: idVehiculo, id_estacion: idEstacion })
+  })
+  .then(res => res.json()) // respuesta JSON
+  .then(data => {
+    if (data.success) {
+      alert('¡Viaje y reserva guardados!');
+      location.reload(); // recarga página
+    } else {
+      document.getElementById('resultado').innerHTML += `<br><span style='color:red'>Error al guardar: ${data.error || 'Desconocido'}</span>`;
+      reservarBtn.textContent = 'Reservar y guardar viaje'; // restaura botón
+      reservarBtn.disabled = false;
+    }
+  })
+  .catch(err => {
+    document.getElementById('resultado').innerHTML += `<br><span style='color:red'>Error de conexión</span>`;
+    reservarBtn.textContent = 'Reservar y guardar viaje';
+    reservarBtn.disabled = false;
+  });
+}
+
+window.initMap = initMap; // expone la función al script de Google
   </script>
 </body>
 </html>

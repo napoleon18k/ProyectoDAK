@@ -2,99 +2,121 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <!-- Ajusta la página al ancho del dispositivo y escala adecuadamente -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Página Cliente</title>
+  <!-- Archivo CSS externo con estilos específicos para esta vista -->
   <link rel="stylesheet" href="../assets/css/cliente.css">
 </head>
 <body>
 
   <!-- ==========================
        HEADER / BARRA SUPERIOR
-       Contiene botones principales, selector de idioma y perfil
+       Contiene botones de navegación, selector de idioma y el perfil
   =========================== -->
   <div class="header">
+    <!-- Botón que abre/cierra el mapa de estaciones -->
     <div class="button-wrapper">
       <button id="btnMapa">Estaciones de carga</button>
-      <div class="msg-alert" id="msgMapa"></div>
+      <div class="msg-alert" id="msgMapa"></div> <!-- Mensaje de alerta contextual -->
     </div>
+    <!-- Botón que lleva a la planificación de viajes -->
     <div class="button-wrapper">
       <button id="btnPlanificar">Planificar viajes</button>
       <div class="msg-alert" id="msgPlanificar"></div>
     </div>
+    <!-- Botón para acceder a la gestión de vehículos -->
     <div class="button-wrapper">
         <button id="btnVehiculos">Mis vehículos</button>
       <div class="msg-alert" id="msgVehiculos"></div>
     </div>
 
+    <!-- Selector de idioma (simple, sin lógica aún) -->
     <div class="idiomas">
       <span>ES</span><span class="separador">|</span><span>EN</span>
     </div>
 
-  <img src="../assets/imagenes/user.jpg" alt="Perfil" class="profile-img" id="profileBtn">
+    <!-- Imagen del perfil (click abre panel de usuario o login) -->
+    <img src="../assets/imagenes/user.jpg" alt="Perfil" class="profile-img" id="profileBtn">
   </div>
 
-  <!-- ==========================
-       IMAGEN DE FONDO PRINCIPAL
-  =========================== -->
+  <!-- Imagen de fondo a pantalla completa -->
   <div class="full-image"></div>
 
   <!-- ==========================
        PANEL DE USUARIO
-       Se muestra/oculta al hacer click en el perfil
+       Se despliega al hacer click en la foto de perfil
   =========================== -->
   <div id="userPanel" style="display:none;">
     <div class="user-info">
+      <!-- Datos cargados dinámicamente desde la sesión -->
       <div class="user-datos">
         <p id="nombreUsuario"></p>
         <p id="correoUsuario"></p>
         <p id="rolUsuario"></p>
       </div>
-  <a href="gestionPerfil.php" id="modificarPerfilLink">Modificar perfil</a>
+      <a href="gestionPerfil.php" id="modificarPerfilLink">Modificar perfil</a>
     </div>
+    <!-- Imágenes con accesos rápidos (historial de viajes, pagos, etc.) -->
     <div class="user-images">
-  <img src="../assets/imagenes/viajes.jpg" alt="Imagen 1" class="user-img">
-  <img src="../assets/imagenes/pagos.jpg" alt="Imagen 2" class="user-img">
+      <img src="../assets/imagenes/viajes.jpg" alt="Imagen 1" class="user-img" id="historialViajesImg" style="cursor:pointer;">
+      <img src="../assets/imagenes/pagos.jpg" alt="Imagen 2" class="user-img">
     </div>
+    <!-- Botón para cerrar sesión -->
     <button id="cerrarSesionBtn">Cerrar sesión</button>
   </div>
 
   <!-- ==========================
        CONTENEDOR DEL MAPA
-       Arranca oculto, se muestra al hacer click en "Estaciones de carga"
+       Inicialmente oculto hasta que el usuario haga click
   =========================== -->
   <div id="mapa" style="display:none;"></div>
 
   <!-- ==========================
        SCRIPT PRINCIPAL
+       Maneja Google Maps, sesiones, botones y eventos
   =========================== -->
   <script>
-    let map;
-    let boundsUruguay;
+    let map;              // Variable global del mapa
+    let boundsUruguay;    // Límites geográficos de Uruguay para centrar el mapa
 
+    // Inicializa Google Maps dentro del div "mapa"
     function initMap() {
+      // Crea el mapa con zoom inicial
       map = new google.maps.Map(document.getElementById("mapa"), { zoom: 6 });
+
+      // Define los límites aproximados de Uruguay
       boundsUruguay = new google.maps.LatLngBounds(
         { lat: -35.5, lng: -58.5 },
         { lat: -30.0, lng: -53.0 }
       );
-      map.fitBounds(boundsUruguay);
+      map.fitBounds(boundsUruguay); // Ajusta el mapa a esos límites
 
-  fetch('../api/getEstaciones.php')
+      // Llama a la API interna para obtener estaciones de carga
+      fetch('../api/getEstaciones.php')
         .then(res => res.json())
         .then(estaciones => {
+          // Recorre cada estación recibida
           estaciones.forEach(est => {
+            // Convierte coordenadas de texto a número
             const pos = { lat: parseFloat(est.lat), lng: parseFloat(est.lng) };
+            // Crea marcador en el mapa
             const marker = new google.maps.Marker({
               position: pos,
               map: map,
               title: est.nombre,
-              icon: { url: '../assets/imagenes/iconomapa.png', scaledSize: new google.maps.Size(40, 40) }
+              icon: { 
+                url: '../assets/imagenes/iconomapa.png', 
+                scaledSize: new google.maps.Size(40, 40) 
+              }
             });
 
+            // Lista de cargadores (cada uno en <li>)
             const listaCargadores = est.cargadores_formateados
               .split('\n')
               .map(linea => `<li>${linea}</li>`).join('');
 
+            // Ventana de información para cada estación
             const infoWindow = new google.maps.InfoWindow({
               content: `<h3>${est.nombre}</h3>
                         <p>${est.direccion}</p>
@@ -102,12 +124,14 @@
                         <ul>${listaCargadores}</ul>`
             });
 
+            // Evento: al clickear el marcador, muestra la info
             marker.addListener('click', () => infoWindow.open(map, marker));
           });
         })
         .catch(err => console.error('Error cargando estaciones:', err));
     }
 
+    // Muestra mensajes de alerta temporales debajo de botones
     function mostrarMensaje(idMsg, texto) {
       const msgDiv = document.getElementById(idMsg);
       msgDiv.textContent = texto;
@@ -115,11 +139,13 @@
       setTimeout(() => { msgDiv.style.opacity = 0; }, 3000);
     }
 
+    // Variables para tooltip (globo de ayuda del perfil)
     const profileBtn = document.getElementById('profileBtn');
     let tooltip = document.createElement('div');
     tooltip.className = 'profile-tooltip';
     document.body.appendChild(tooltip);
 
+    // Muestra tooltip debajo de la foto de perfil
     function mostrarTooltip(texto) {
       const rect = profileBtn.getBoundingClientRect();
       tooltip.textContent = texto;
@@ -129,12 +155,14 @@
       tooltip.style.transform = "translateY(0)";
     }
 
+    // Oculta tooltip
     function ocultarTooltip() {
       tooltip.style.opacity = 0;
       tooltip.style.transform = "translateY(5px)";
     }
 
-  fetch('../api/check_session.php')
+    // Verifica si hay sesión activa llamando a API
+    fetch('../api/check_session.php')
       .then(res => res.json())
       .then(data => {
         const userPanel = document.getElementById('userPanel');
@@ -142,57 +170,78 @@
         const correoUsuario = document.getElementById('correoUsuario');
         const rolUsuario = document.getElementById('rolUsuario');
 
+        // Si NO hay sesión activa
         if (!data.loggedIn) {
-          profileBtn.addEventListener('click', () => { window.location.href = 'login.html'; }); // Si login.html está en src/vistas, la ruta está bien
+          // Redirige al login al hacer click en la foto
+          profileBtn.addEventListener('click', () => { window.location.href = 'login.html'; });
+          // Tooltip muestra "Login"
           profileBtn.addEventListener('mouseover', () => mostrarTooltip('Login'));
           profileBtn.addEventListener('mouseout', ocultarTooltip);
+          // Botones muestran advertencia de que hay que iniciar sesión
           document.getElementById('btnMapa').addEventListener('click', () => mostrarMensaje('msgMapa','⚠️ Debes iniciar sesión'));
           document.getElementById('btnPlanificar').addEventListener('click', () => mostrarMensaje('msgPlanificar','⚠️ Debes iniciar sesión'));
           document.getElementById('btnVehiculos').addEventListener('click', () => mostrarMensaje('msgVehiculos','⚠️ Debes iniciar sesión'));
+
         } else {
+          // Si hay sesión activa: muestra datos del usuario
           nombreUsuario.textContent = `Usuario: ${data.usuario}`;
           correoUsuario.textContent = `Correo: ${data.correo}`;
           rolUsuario.textContent = `Rol: ${data.rol}`;
 
+          // Toggle: abrir/cerrar panel de usuario al hacer click en foto
           profileBtn.addEventListener('click', () => {
             userPanel.style.display = userPanel.style.display === 'none' ? 'block' : 'none';
           });
+          // Tooltip muestra "Perfil"
           profileBtn.addEventListener('mouseover', () => mostrarTooltip('Perfil'));
           profileBtn.addEventListener('mouseout', ocultarTooltip);
 
+          // Cerrar sesión
           document.getElementById('cerrarSesionBtn').addEventListener('click', () => {
             fetch('../api/logout.php').then(() => window.location.reload());
           });
 
+          // Redirección al modificar perfil
           document.getElementById('modificarPerfilLink').addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.href = 'gestionPerfil.php'; // Si gestionPerfil.php está en src/vistas, la ruta está bien
+            window.location.href = 'gestionPerfil.php';
           });
 
+          // Mostrar/ocultar mapa de estaciones
           document.getElementById('btnMapa').addEventListener('click', () => {
             const mapaDiv = document.getElementById('mapa');
             const visible = mapaDiv.style.display === 'none' ? 'block' : 'none';
             mapaDiv.style.display = visible;
             if (visible === 'block') {
+              // Ajusta mapa al mostrarse
               google.maps.event.trigger(map, 'resize');
               map.fitBounds(boundsUruguay);
             }
           });
 
+          // Redirigir a planificador de viajes
           document.getElementById('btnPlanificar').addEventListener('click', () => {
             window.location.href = 'viajeCliente.html';
           });
+
+          // Redirigir a gestión de vehículos
           document.getElementById('btnVehiculos').addEventListener('click', () => {
-            window.location.href = 'gestionVehiculoscliente.html';
+            window.location.href = 'gestionVehiculoscliente.php';
+          });
+
+          // Redirigir a historial de viajes al clickear imagen
+          document.getElementById('historialViajesImg').addEventListener('click', () => {
+            window.location.href = 'historialViajes.php';
           });
         }
       })
       .catch(err => console.error('Error verificando sesión:', err));
 
+    // Llama a initMap() cuando la página termine de cargar
     window.addEventListener('load', initMap);
   </script>
 
-  <!-- Google Maps API -->
+  <!-- Google Maps API cargada de forma asíncrona -->
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4HgNqmymEub5LY68nN-s-ONF-i931SCE&callback=initMap">
   </script>

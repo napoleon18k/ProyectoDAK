@@ -1,0 +1,16 @@
+SESSION: Array
+(
+    [usuario] => cliente
+    [rol] => cliente
+    [id_usuario] => 32
+)
+
+POST: {"id_vehiculo":21,"id_estacion":75}
+SESSION: Array
+(
+    [usuario] => cliente
+    [rol] => cliente
+    [id_usuario] => 32
+)
+
+POST: {"id_vehiculo":21,"id_estacion":164}

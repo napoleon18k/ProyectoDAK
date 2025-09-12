@@ -39,7 +39,17 @@ switch ($method) {
             if ($result['success']) {
                 $_SESSION['usuario'] = $usuario;
                 $_SESSION['rol'] = $result['rol'];
-
+                // Si el id_usuario no viene en $result, obtenerlo por consulta
+                if (!isset($result['id_usuario'])) {
+                    // Buscar el id por nombre de usuario
+                    $sql = "SELECT id FROM usuarios WHERE usuario = ? LIMIT 1";
+                    $stmt = $usuarioObj->conexion->prepare($sql);
+                    $stmt->execute([$usuario]);
+                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $_SESSION['id_usuario'] = $row ? $row['id'] : null;
+                } else {
+                    $_SESSION['id_usuario'] = $result['id_usuario'];
+                }
                 echo json_encode(['success' => true, 'rol' => $result['rol']]);
             } else {
                 echo json_encode(['success' => false, 'error' => $result['error'] ?? 'Usuario o contraseña incorrecta']);
