@@ -1,44 +1,52 @@
 <?php
 session_start(); 
-// Inicia la sesión para poder acceder a variables de sesión guardadas
-
-// Verificamos si hay usuario logueado y si su rol es "cliente"
+// Verificamos si hay usuario logueado y rol cliente
 if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'cliente') {
-    // Si no existe usuario en sesión o el rol no es cliente, lo redirige al login
     header('Location: login.html');
-    exit(); // Detiene la ejecución del script
+    exit();
 }
-?>
 
-
-<?php
-include '../conexion.php'; 
-
-// Crea la conexión usando la función definida en conexion.php
+require_once '../conexion.php'; 
 $conn = conexion();
 
-// Consulta SQL: obtiene todos los viajes, ordenados por fecha de inicio descendente
-$stmt = $conn->query("SELECT id_viaje, id_vehiculo, fecha_inicio FROM viaje ORDER BY fecha_inicio DESC");
+$id_usuario = $_SESSION['id_usuario'];
 
-// Almacena los resultados en un array asociativo
+// 📌 Traemos viajes del usuario logueado
+$sql = "SELECT v.id_viaje, v.id_vehiculo, v.fecha_viaje, v.origen, v.destino
+        FROM viajes v
+        WHERE v.id_usuario = ?
+        ORDER BY v.fecha_viaje DESC";
+$stmt = $conn->prepare($sql);
+$stmt->execute([$id_usuario]);
 $viajes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
 
+// 📌 Traemos paradas asociadas a cada viaje
+$paradasPorViaje = [];
+if ($viajes) {
+    $ids = implode(',', array_column($viajes, 'id_viaje'));
+    $sqlParadas = "SELECT p.id_viaje, p.orden, e.nombre AS estacion, e.departamento
+                   FROM paradas p
+                   INNER JOIN reservas r ON p.id_reserva = r.id_reserva
+                   INNER JOIN estaciones e ON r.id_estacion = e.id
+                   WHERE p.id_viaje IN ($ids)
+                   ORDER BY p.id_viaje, p.orden ASC";
+    $resParadas = $conn->query($sqlParadas)->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($resParadas as $p) {
+        $paradasPorViaje[$p['id_viaje']][] = $p;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<!-- Hace que la página se adapte a pantallas de celulares -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Historial de Viajes</title>
-
-<!-- CSS principal de cliente -->
 <link rel="stylesheet" href="../assets/css/cliente.css">
-
-<!-- Estilos propios de esta página -->
 <style>
     table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; vertical-align: top; }
     th { background-color: #f2f2f2; }
     .btn-volver { 
         padding: 10px 20px; 
@@ -49,40 +57,53 @@ $viajes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         border-radius: 5px; 
     }
     .btn-volver:hover { background-color: #0056b3; }
+    ul { margin: 0; padding-left: 20px; }
 </style>
 </head>
 <body>
 <h2>Historial de Viajes</h2>
 
-<!-- Tabla donde se muestran los viajes -->
 <table>
     <thead>
         <tr>
             <th>ID Viaje</th>
-            <th>ID Vehículo</th>
-            <th>Fecha Inicio</th>
+            <th>Vehículo</th>
+            <th>Fecha</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Paradas</th>
         </tr>
     </thead>
     <tbody>
-        <!-- Si hay registros de viajes -->
-        <?php if(count($viajes) > 0): ?>
-            <!-- Recorre cada viaje y muestra sus datos en la tabla -->
-            <?php foreach($viajes as $row): ?>
+        <?php if($viajes && count($viajes) > 0): ?>
+            <?php foreach($viajes as $v): ?>
                 <tr>
-                    <!-- htmlspecialchars evita inyección de código HTML -->
-                    <td><?= htmlspecialchars($row['id_viaje'] ?? '') ?></td>
-                    <td><?= htmlspecialchars($row['id_vehiculo'] ?? '') ?></td>
-                    <td><?= htmlspecialchars($row['fecha_inicio'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($v['id_viaje']) ?></td>
+                    <td><?= htmlspecialchars($v['id_vehiculo']) ?></td>
+                    <td><?= htmlspecialchars($v['fecha_viaje']) ?></td>
+                    <td><?= htmlspecialchars($v['origen']) ?></td>
+                    <td><?= htmlspecialchars($v['destino']) ?></td>
+                    <td>
+                        <?php if(isset($paradasPorViaje[$v['id_viaje']])): ?>
+                            <ul>
+                                <?php foreach($paradasPorViaje[$v['id_viaje']] as $p): ?>
+                                    <li><?= htmlspecialchars($p['orden']) ?>. 
+                                        <?= htmlspecialchars($p['estacion']) ?> (<?= htmlspecialchars($p['departamento']) ?>)
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php else: ?>
+                            Sin paradas
+                        <?php endif; ?>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>
-            <!-- Si no hay viajes muestra un mensaje -->
-            <tr><td colspan="3">No hay viajes registrados</td></tr>
+            <tr><td colspan="6">No hay viajes registrados</td></tr>
         <?php endif; ?>
     </tbody>
 </table>
 
-<!-- Botón para volver a la página principal -->
 <button class="btn-volver" onclick="window.location.href='PrincipalCliente.html'">Volver a Principal</button>
 
 </body>

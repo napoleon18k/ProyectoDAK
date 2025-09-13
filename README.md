@@ -14,4 +14,4 @@ PROYECTO_DOCKER/
 ├──docker-compose.yml
 ├──.env
 ├──.htaccess
-├──Dockerfile
+└── Dockerfile

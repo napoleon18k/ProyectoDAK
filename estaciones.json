@@ -1,0 +1,1439 @@
+[
+  {
+    "nombre": "Joanicó",
+    "direccion": "Joanicó esquina Bv. Jose Batlle y Ordoñez, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8},
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"3 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Electrolinera Leguizamón",
+    "direccion": "Jose Leguizamon 3463, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"2 (con cable)","precio_base":50.3,"precio_kWh":9.5},
+      {"tipo":"CCS2","potencia":"120 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8},
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"10 (con cable)","precio_base":121.9,"precio_kWh":10.8},
+      {"tipo":"GB/T","potencia":"30 kW","conectores":"6 (con cable)","precio_base":121.9,"precio_kWh":10.8},
+      {"tipo":"GB/T","potencia":"0 kW","conectores":"1 (sin cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Intendencia",
+    "direccion": "Santiago de Chile esq. San José, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"6 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Belloni",
+    "direccion": "Av. José Belloni y Av. 8 de Octubre, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"4 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Parque de la amistad",
+    "direccion": "Alejo Rosell y Ruis esquina Av. Rivera, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"4 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Golf",
+    "direccion": "Bulevar General Artigas y Errazquin, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"4 (con cable)","precio_base":50.3,"precio_kWh":9.5},
+      {"tipo":"CHAdeMO","potencia":"50 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8},
+      {"tipo":"CCS2","potencia":"50 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "La Cumparsita",
+    "direccion": "La Cumparsita esq. Ejido, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"4 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Plaza San Martín",
+    "direccion": "Soldados Orientales de San Martín esquina Uruguayana, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"4 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Estadio Centenario",
+    "direccion": "Av. Dr. Américo Ricaldoni esq. Av. Italia, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Plaza Colón",
+    "direccion": "Vidiella entre Av. Eugenio Garzón y A. Passadore, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"2 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Plaza Pedro Poveda DC",
+    "direccion": "Enrique García Peña s/n, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Gremial del Taxi CPATU",
+    "direccion": "Burgues 3143, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Macromercado San Martín",
+    "direccion": "Dr. Jose Pugnalini esq. Av. Gral. San Martin, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"7.4 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5},
+      {"tipo":"Tipo 2","potencia":"7.4 kW","conectores":"1 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "ANCAP Rivera y Bolivia",
+    "direccion": "Av. Rivera esquina Av. Bolivia, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Plaza Paul Harris",
+    "direccion": "Barradas y Av. Italia, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"4 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Terminal del Cerro",
+    "direccion": "Pedro Castellino y Ramón Tabárez, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8},
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Hospital BSE",
+    "direccion": "Av. José Pedro Varela 3420, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Batoví",
+    "direccion": "Batoví esquina Dr. Luis P. Lenguas, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"4 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Hospital de Ojos Saint Bois",
+    "direccion": "Camino Fauquet y Guanahani, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8},
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"2 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Montevideo Shopping",
+    "direccion": "Av. Luis A. de Herrera 1290, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"30 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Av. Fco. Soca y Libertad",
+    "direccion": "Av. Fransisco Soca esq. Libertad, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"4 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Casino Parque Hotel",
+    "direccion": "Dr. Luis Piera y Lauro Müller, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CHAdeMO","potencia":"50 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8},
+      {"tipo":"CCS2","potencia":"50 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8},
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"3 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Hotel NH Montevideo",
+    "direccion": "Carlos A. Miles y Misiones, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"4 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Skatepark Carrasco",
+    "direccion": "Costa Rica y Eduardo Couture, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "ANCAP Ruta 1 y Camino Flores",
+    "direccion": "Ruta 1 y Camino Flores, Paso de la Arena, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"2 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Plaza Samuel Lafone",
+    "direccion": "Ruperto Perez Martinez y Heredia, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"2 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "UAM",
+    "direccion": "Camino Perez y Ruta 5, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8},
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Palacio de la Luz - Paraguay",
+    "direccion": "Paraguay esq. Aguilar, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Shopping Nuevocentro",
+    "direccion": "Br. Artigas y Pampillo y Novas, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"30 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Museo Zorrilla",
+    "direccion": "Jose Zorrilla de San Martin 96, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Terminal del Cerro 2",
+    "direccion": "Pedro Castellino y Ramón Tabárez, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Palacio de la Luz - Aguilar",
+    "direccion": "General Fausto Aguilar entre Paraguay y Mendoza, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Palacio de la Luz DC Mendoza",
+    "direccion": "Mendoza esq. Fausto Aguilar, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"4 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Palacio Legislativo DC",
+    "direccion": "Av. de las Leyes y Colombia, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Banco Central del Uruguay",
+    "direccion": "Florida esq. Av Uruguay, Montevideo, Montevideo",
+    "departamento": "Montevideo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "ANCAP Bella Unión",
+    "direccion": "Ruta 3 Km. 628,000, 55100 Artigas, Bella Unión, Artigas",
+    "departamento": "Artigas",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Plaza de los Niños",
+    "direccion": "Juan Antonio Lavalleja y Héctor Princivalle, Artigas, Artigas",
+    "departamento": "Artigas",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Plaza Artigas",
+    "direccion": "Gral. eugenio Garzón y Eduardo Castro, Artigas, Artigas",
+    "departamento": "Artigas",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Plaza Batlle y Ordóñez",
+    "direccion": "Treinta y Tres y Av. Carlos Lecueder, Artigas, Artigas",
+    "departamento": "Artigas",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  
+  {
+    "nombre": "ANCAP San Luis",
+    "direccion": "Ruta Interbalnearia Km. 63,500, San Luis, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8},
+      {"tipo":"GB/T","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "ANCAP Car One",
+    "direccion": "Ruta Interbalnearia esq. Av. Uruguay, Ciudad de la Costa, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "ANCAP Tala",
+    "direccion": "Tomás Berreta y Guzmán Azuaga, Tala, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"1 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "ANCAP La Paz",
+    "direccion": "Ruta 5 km 19700 esq Tomás Aldabalde, La Paz, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"2 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "ANCAP Canelones",
+    "direccion": "Ruta 11 km 102,200, Canelones, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"2 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "ANCAP Piedra del Toro",
+    "direccion": "Ruta 8 Km. 41.500, 15600 Piedra del Toro, Departamento de Canelones, Piedra del Toro, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Almenara Mall",
+    "direccion": "Ruta Gral. Líber Seregni km 22,500, Ciudad de la Costa, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Plaza San Jacinto",
+    "direccion": "Maria Vera esq. Cayetano Gonzalez, San Jacinto, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Plaza Artigas La Floresta",
+    "direccion": "Avenida General Artigas esquina San José, La Floresta, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "San Ramón",
+    "direccion": "Baltasar Brum esquina Avenida José Batlle y Ordóñez, San Ramón, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8},
+      {"tipo":"GB/T","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Estadio Martínez Monegal",
+    "direccion": "Av. Martínez Monegal y Juan Antonio Lavalleja, Canelones, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "ANCAP Sauce",
+    "direccion": "Treinta y Tres esquina Antonio Ledesma, Sauce, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Centro de Atención Turística Atlántida",
+    "direccion": "Calle 2 esq. Calle 3, Atlántida, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8},
+      {"tipo":"GB/T","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Shopping Las Piedras",
+    "direccion": "Avenida José Gervasio Artigas esq. Francisca Arnal de Artigas, Las Piedras, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"GB/T","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8},
+      {"tipo":"CCS2","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Parque del Plata",
+    "direccion": "Mario Ferreira y Calle 1, Parque del Plata, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"2 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Plaza Atlántida",
+    "direccion": "Roger Balet esq. Republica de Chile, Atlantida, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"2 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Macromercado Carrasco",
+    "direccion": "Avenida Al Parque 2495, Ciudad de la Costa, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"7.4 kW","conectores":"1 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Plaza Sauce",
+    "direccion": "General Artigas esq. Ruta 107, Sauce, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"2 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Plaza Pando",
+    "direccion": "Ituzaingó esq. Gral. José G. Artigas, Pando, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"2 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Plaza de Deportes de Pando",
+    "direccion": "Jose Pedro Varela esquina Ruta 8, Pando, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8},
+      {"tipo":"GB/T","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Pinamar DC",
+    "direccion": "Avenida Acceso y Ruta Interbalnearia, Costa de Oro, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "El Pinar",
+    "direccion": "Av. Costanera José Pepe D' Elia, esquina Av. Naciones Unidas, Ciudad de la Costa, Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Ancap Aeropuerto GB/T",
+    "direccion": "Ruta 101 casi Av. De las Americas, Ciudad de , Canelones",
+    "departamento": "Canelones",
+    "cargadores": [
+      {"tipo":"GB/T","potencia":"30 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "ANCAP Rio Branco",
+    "direccion": "Ruta 26 km 84, Río Branco, Cerro Largo",
+    "departamento": "Cerro Largo",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "ANCAP Melo",
+    "direccion": "18 de Julio y Ejido, Melo, Cerro Largo",
+    "departamento": "Cerro Largo",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"2 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Panda Free Shop",
+    "direccion": "Juanita Arismendi de Imicoz esq. Ruta 26, Rio Branco, Cerro Largo",
+    "departamento": "Cerro Largo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "ANCAP Tupambaé",
+    "direccion": "Ruta 7 y Uruguay, Tupambaé, Cerro Largo",
+    "departamento": "Cerro Largo",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "447 Duty Free Shop",
+    "direccion": "Av. Jose G. Artigas, Acegua, Cerro Largo",
+    "departamento": "Cerro Largo",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "ANCAP Colonia del Sacramento",
+    "direccion": "Av. Buenos Aires y 18 de Julio, Colonia, Colonia",
+    "departamento": "Colonia",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "ANCAP Rosario",
+    "direccion": "Ruta 2. esq.Baltasar Brum, Rosario, Colonia",
+    "departamento": "Colonia",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "ANCAP Florencio Sanchez",
+    "direccion": "25 de Agosto esq. Artigas, Florencio Sanchez, Colonia",
+    "departamento": "Colonia",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "ANCAP Carmelo",
+    "direccion": "Treinta y Tres Orientales entre Tomas Gomez y Paraguay, Carmelo, Colonia",
+    "departamento": "Colonia",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "ANCAP Nueva Palmira",
+    "direccion": "Ruta 21 esq. San José, Nueva Palmira, Nueva Palmira, Colonia",
+    "departamento": "Colonia",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Plaza de Toros de Colonia",
+    "direccion": "Juan Manuel Caballero y Río de la Plata, Colonia del Sacramento, Colonia",
+    "departamento": "Colonia",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"2 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Plaza Los Fundadores",
+    "direccion": "Berna esq. 25 de Agosto, Nueva Helvecia, Colonia",
+    "departamento": "Colonia",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Colonia Valdense",
+    "direccion": "Ruta 1 vieja esq. Timbó, Colonia Valdense, Colonia",
+    "departamento": "Colonia",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Plaza De la Familia - Carmelo",
+    "direccion": "19 de Abril esquina Ansina, Carmelo, Colonia",
+    "departamento": "Colonia",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5},
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Colonia Shopping",
+    "direccion": "Franklin Roosevelt y Fray Bentos, Colonia del Sacramento, Colonia",
+    "departamento": "Colonia",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8},
+      {"tipo":"GB/T","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Plaza Artigas Florencio Sánchez",
+    "direccion": "Calle Artigas, esquina 19 de Abril., Florencio Sánchez, Colonia",
+    "departamento": "Colonia",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Terminal Tarariras",
+    "direccion": "Gutirerrez Ruiz esq. Ruta 22, Tarariras, Colonia",
+    "departamento": "Colonia",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "UTEC Durazno",
+    "direccion": "Dr. Maciel entre Rubino y Morquio, Durazno, Durazno, Durazno",
+    "departamento": "Durazno",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "ANCAP Durazno",
+    "direccion": "Brigadier Gral. Fructuoso Rivera, Durazno, Durazno",
+    "departamento": "Durazno",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"2 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "ANCAP Sarandí del Yí",
+    "direccion": "Pte. Bernardo Berro 604, Sarandí del Yí, Durazno",
+    "departamento": "Durazno",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"2 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Plaza Sarandí Durazno",
+    "direccion": "General Artigas entre Luis Alberto de Herrera y 19 de Abril, Durazno, Durazno",
+    "departamento": "Durazno",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Plaza Independencia Durazno",
+    "direccion": "Brig. Gral. Fructuoso Rivera entre Eusebio Piriz y Brig. Gral. Manuel Oribe, Durazno, Durazno",
+    "departamento": "Durazno",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Junta Local Centenario",
+    "direccion": "Bvar. Artigas esq. Ruta 5, Pueblo Centenario, Durazno",
+    "departamento": "Durazno",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"2 (sin cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "La Paloma Durazno",
+    "direccion": "Macaria Domínguez esquina Severino Cristiano López, La Paloma, Durazno",
+    "departamento": "Durazno",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "Plaza Artigas Villa del Carmen",
+    "direccion": "Dr. Ricardo J. Schunk s/n, Villa del Carmen, Durazno",
+    "departamento": "Durazno",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"22 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "ANCAP Trinidad",
+    "direccion": "Ines Durán 1061 y Navea, Trinidad, Flores",
+    "departamento": "Flores",
+    "cargadores": [
+      {"tipo":"Tipo 2","potencia":"43 kW","conectores":"1 (con cable)","precio_base":50.3,"precio_kWh":9.5}
+    ]
+  },
+  {
+    "nombre": "ANCAP Trinidad - Ruta 3",
+    "direccion": "Ruta 3 esq. Ruta 14, Trinidad, Flores",
+    "departamento": "Flores",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Plaza Constitución Trinidad",
+    "direccion": "Dr. Luis Alberto de Herrera esq. Fray Ubeda, Trinidad, Flores",
+    "departamento": "Flores",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"60 kW","conectores":"2 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "Ecoparque Talice",
+    "direccion": "Ruta 3 km 193, Trinidad, Flores",
+    "departamento": "Flores",
+    "cargadores": [
+      {"tipo":"CCS2","potencia":"30 kW","conectores":"1 (con cable)","precio_base":121.9,"precio_kWh":10.8}
+    ]
+  },
+  {
+    "nombre": "ANCAP José Batlle y Ordóñez",
+    "direccion": "19 de Abril y Ruta 7, José Batlle y Ordóñez, Lavalleja",
+    "departamento": "Lavalleja",
+    "cargadores": [{"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "1 conector (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}]
+  },
+  {
+    "nombre": "ANCAP José Pedro Varela",
+    "direccion": "Calle Treinta y Tres esquina 18 de Julio, José Pedro Varela, Lavalleja",
+    "departamento": "Lavalleja",
+    "cargadores": [{"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "1 conector (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}]
+  },
+  {
+    "nombre": "ANCAP Minas",
+    "direccion": "Diagonal Oribe y Luis A. de Herrera, Minas, Lavalleja",
+    "departamento": "Lavalleja",
+    "cargadores": [{"tipo": "Tipo 2", "potencia": "43 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}]
+  },
+  {
+    "nombre": "ANCAP Mariscala",
+    "direccion": "Ruta 8 Km. 182,000, 30000 Lavalleja, Departamento de Lavalleja, Mariscala, Lavalleja",
+    "departamento": "Lavalleja",
+    "cargadores": [{"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "1 conector (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}]
+  },
+  {
+    "nombre": "Parque de Minas",
+    "direccion": "Ruta 12 km 347.500, Minas, Lavalleja",
+    "departamento": "Lavalleja",
+    "cargadores": [{"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}, 
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}]
+  },
+  {
+    "nombre": "Plaza Rivera Minas",
+    "direccion": "Ituzaingó esquina Franklin Delano Roosevelt, Minas, Lavalleja",
+    "departamento": "Lavalleja",
+    "cargadores": [{"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}]
+  },
+  {
+    "nombre": "Estación Península",
+    "direccion": "Capitán Miranda esquina El Trinquete, Punta del Este, Maldonado",
+    "departamento": "Maldonado",
+    "cargadores": [
+      {"tipo": "GB/T", "potencia": "30 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8},
+      {"tipo": "GB/T", "potencia": "0 kW", "conectores": "1 conector (sin cable)", "precio_base": 121.9, "precio_kWh": 10.8},
+      {"tipo": "CCS2", "potencia": "30 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+    ]
+  },
+  {
+    "nombre": "ANCAP Roosevelt Punta del Este",
+    "direccion": "Roosevelt y Naciones Unidas, Maldonado, Maldonado",
+    "departamento": "Maldonado",
+    "cargadores": [
+      {"tipo": "CCS2", "potencia": "30 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+    ]
+  },
+  {
+    "nombre": "ANCAP Solanas",
+    "direccion": "Ruta 93 Km. 118,000, Maldonado, Maldonado",
+    "departamento": "Maldonado",
+    "cargadores": [
+      {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5},
+      {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+    ]
+  },
+  {
+    "nombre": "Punta del Este - Parada 3",
+    "direccion": "Bvar Artigas y Av Francisco Salazar, Punta del Este, Maldonado",
+    "departamento": "Maldonado",
+    "cargadores": [
+      {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8},
+      {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5},
+      {"tipo": "CHAdeMO", "potencia": "50 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8},
+      {"tipo": "CCS2", "potencia": "50 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8},
+      {"tipo": "Tipo 2", "potencia": "43 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+    ]
+  },
+  {
+    "nombre": "Punta del Este - Parada 5",
+    "direccion": "Lunas de Oro y Avda. Roosevelt, Punta del Este, Maldonado",
+    "departamento": "Maldonado",
+    "cargadores": [
+      {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5},
+      {"tipo": "CCS2", "potencia": "60 kW", "conectores": "4 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+    ]
+  },
+  {
+    "nombre": "ANCAP José Ignacio",
+    "direccion": "Ruta 10 y Camino Ing. Sainz Martinez, José Ignacio, Maldonado",
+    "departamento": "Maldonado",
+    "cargadores": [
+      {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5},
+      {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+    ]
+  },
+  {
+    "nombre": "Terminal Piriápolis",
+    "direccion": "Santos Negro González y Misiones, Piriápolis, Maldonado",
+    "departamento": "Maldonado",
+    "cargadores": [
+      {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+    ]
+  },
+  {
+    "nombre": "Terminal San Carlos",
+    "direccion": "José Enrique Rodó esquina Nuble González Olaza, San Carlos , Maldonado",
+    "departamento": "Maldonado",
+    "cargadores": [
+      {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+    ]
+  },
+  {
+    "nombre": "La Barra",
+    "direccion": "Los Destinos y Bartolomé Hidalgo, Punta del Este, Maldonado",
+    "departamento": "Maldonado",
+    "cargadores": [
+      {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+    ]
+  },
+  {
+    "nombre": "Hospital de Pan de Azúcar",
+    "direccion": "Francisco Bonilla y Rincón, Pan de Azúcar, Maldonado",
+    "departamento": "Maldonado",
+    "cargadores": [
+      {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+    ]
+  },
+  {
+    "nombre": "Macromercado Maldonado",
+    "direccion": "Bulevar Artigas y Cachimba del Rey, Maldonado, Maldonado",
+    "departamento": "Maldonado",
+    "cargadores": [
+      {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+    ]
+  },
+  {
+    "nombre": "ANCAP Ruta 39 y Perimetral",
+    "direccion": "Ruta 39 y Ruta Perimetral, Maldonado, Maldonado",
+    "departamento": "Maldonado",
+    "cargadores": [
+      {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+    ]
+  },
+  {
+    "nombre": "San Rafael",
+    "direccion": "Acapulco y Av. Mar del Plata, Punta del Este, Maldonado",
+    "departamento": "Maldonado",
+    "cargadores": [
+      {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8},
+      {"tipo": "GB/T", "potencia": "30 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8},
+      {"tipo": "GB/T", "potencia": "0 kW", "conectores": "1 conector (sin cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+    ]
+  },
+  {
+    "nombre": "Novillo Alegre Punta",
+    "direccion": "Avenida al Paso de la Cadena esquina Avenida Roosevelt, Punta del Este, Maldonado",
+    "departamento": "Maldonado",
+    "cargadores": [
+      {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+    ]
+  },
+  {
+    "nombre": "Municipio Punta del Este",
+    "direccion": "Calle 30 esquina Gorlero, Punta del Este, Maldonado",
+    "departamento": "Maldonado",
+    "cargadores": [
+      {"tipo": "CCS2", "potencia": "30 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+    ]
+  },
+  {
+  "nombre": "TaTa Maldonado",
+  "direccion": "25 de Mayo 600, Maldonado, Maldonado",
+  "departamento": "Maldonado",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+
+
+{
+  "nombre": "ANCAP Guichón",
+  "direccion": "Dr. Penza 272 y Avda. Artigas, Guichón, Paysandú",
+  "departamento": "Paysandú",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "1 conector (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "ANCAP Paysandú",
+  "direccion": "Ruta 3 km 366, Paysandú, Paysandú",
+  "departamento": "Paysandú",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "43 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "ANCAP Constancia",
+  "direccion": "Ruta 3 km 384, Constancia, Paysandú",
+  "departamento": "Paysandú",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "ANCAP Francolino Paysandú",
+  "direccion": "Av. España y Juncal, Paysandú, Paysandú",
+  "departamento": "Paysandú",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "Estadio Parque Artigas",
+  "direccion": "Bvlr. Artigas y 25 de Mayo, Paysandú, Paysandú",
+  "departamento": "Paysandú",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8},
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "Tambores",
+  "direccion": "Francisco Lascano y Calle 27, Tambores, Paysandú",
+  "departamento": "Paysandú",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "Plaza Constitución Paysandú",
+  "direccion": "Florida esquina Juan Zorrilla de San Martín , Paysandú, Paysandú",
+  "departamento": "Paysandú",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "30 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "TaTa Paysandú",
+  "direccion": "Washington 1673, Paysandú, Paysandú",
+  "departamento": "Paysandú",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "1 conector (con cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "ANCAP Fray Bentos",
+  "direccion": "Ruta 2 y 24, Fray Bentos, Río Negro",
+  "departamento": "Río Negro",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "43 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "ANCAP Young",
+  "direccion": "Montevideo 3194, Young, Río Negro",
+  "departamento": "Río Negro",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "Terminal Fray Bentos",
+  "direccion": "José Pedro Varela esquina 18 de Julio, Fray Bentos, Río Negro",
+  "departamento": "Río Negro",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "43 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "Plaza Rivera, Fray Bentos",
+  "direccion": "Rincón esquina Alzaibar, Fray Bentos, Río Negro",
+  "departamento": "Río Negro",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "43 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "Plaza Romay, Nuevo Berlín",
+  "direccion": "Av. Carlos Romay, esquina Rep. Argentina, Nuevo Berlín, Río Negro",
+  "departamento": "Río Negro",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "43 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "Plaza Libertad, San Javier",
+  "direccion": "18 de Julio esquina José Pedro Varela, San Javier, Río Negro",
+  "departamento": "Río Negro",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "1 conector (con cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "Plaza Constitución Fray Bentos",
+  "direccion": "Treinta y Tres entre 18 de Julio y Rincón, Fray Bentos, Río Negro",
+  "departamento": "Río Negro",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "Estadio Municipal Parque Liebig's",
+  "direccion": "Brasil esquina Lynch, Fray Bentos, Río Negro",
+  "departamento": "Río Negro",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "43 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "Duty Free Shop Fray Bentos",
+  "direccion": "Estacionamiento Duty Free Shop, Puente Internacional San Martín, Río Negro",
+  "departamento": "Río Negro",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "4 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "Municipio de Young",
+  "direccion": "25 de Agosto esquina Vía Ferrocarril , Young, Río Negro",
+  "departamento": "Río Negro",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "Parque Lineal Young",
+  "direccion": "Rincón esquina Ruta 3, Young, Río Negro",
+  "departamento": "Río Negro",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "30 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8},
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "ANCAP Buena Unión",
+  "direccion": "Ruta 5 y Ruta 30, Buena Unión, Rivera",
+  "departamento": "Rivera",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "1 conector (con cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "ANCAP Rivera",
+  "direccion": "Luis Alberto de Herrera y Ruta 5, Rivera, Rivera",
+  "departamento": "Rivera",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "ANCAP Vichadero",
+  "direccion": "Bulevar Artigas y Dr. Paradera, Vichadero, Rivera",
+  "departamento": "Rivera",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "1 conector (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "Plaza Artigas - Rivera",
+  "direccion": "Agraciada y Gral. Artigas, Rivera, Rivera",
+  "departamento": "Rivera",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "43 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "Minas de Corrales",
+  "direccion": "Avenida Davison y Dr. Ross, Minas de Corrales, Rivera",
+  "departamento": "Rivera",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "Tranqueras - Plaza Los 33 Orientales",
+  "direccion": "Dr. Dellepiane y Brasil, Tranqueras, Rivera",
+  "departamento": "Rivera",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "Macromercado Rivera",
+  "direccion": "Julio M. Sosa esquina Frugoni, Rivera, Rivera",
+  "departamento": "Rivera",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "UTEC Rivera",
+  "direccion": "Guido Machado Brum esquina calle de entrada a UTEC, Rivera, Rivera",
+  "departamento": "Rivera",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "43 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+}
+,
+
+
+{
+  "nombre": "ANCAP Chuy",
+  "direccion": "Gral Artigas 209 y Samuel Prilliac, 27100, Chuy, Rocha",
+  "departamento": "Rocha",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "30 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "ANCAP Rocha",
+  "direccion": "Ruta 9 km 206,400, 27000, Rocha, Rocha",
+  "departamento": "Rocha",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "Parque Santa Teresa",
+  "direccion": "Ruta 9 Km 302, Rocha, Parque Nacional de Santa Teresa, Rocha",
+  "departamento": "Rocha",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "43 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8},
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "ANCAP Velázquez",
+  "direccion": "Ruta 15 km 84,500, Velázquez, Rocha",
+  "departamento": "Rocha",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "1 conector (con cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "Rocha - Oficina de Turismo",
+  "direccion": "Ruta 9 y Ruta 15, Rocha, Rocha",
+  "departamento": "Rocha",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "30 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "La Pedrera",
+  "direccion": "Pitanga y Av. Principal, La Pedrera, Rocha",
+  "departamento": "Rocha",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "Centro Cultural La Paloma",
+  "direccion": "Dr. Javier Barrios Amorín y Paloma, La Paloma, Rocha",
+  "departamento": "Rocha",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "La Paloma",
+  "direccion": "Av. de la Iglesia entre Av. Del Navío y Av. Sirio, La Paloma, Rocha",
+  "departamento": "Rocha",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "CHUY DFA",
+  "direccion": "Avenida Brasil 267, Chuy, Rocha",
+  "departamento": "Rocha",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "ANCAP Salto",
+  "direccion": "Ruta 3 km 491,500, Salto, Salto",
+  "departamento": "Salto",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "1 conector (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "Plaza 33 Orientales",
+  "direccion": "Juan Carlos Gomez esq. Artigas, Salto, Salto",
+  "departamento": "Salto",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "Termas del Arapey",
+  "direccion": "Brasil esq. Uruguay, Arapey, Salto",
+  "departamento": "Salto",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "Termas de Daymán",
+  "direccion": "Av Paysandu esq. Ruta 3, Salto, Salto",
+  "departamento": "Salto",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "Barrio Dos Naciones",
+  "direccion": "Calle C esq. Apolon de Mirbeck, Salto, Salto",
+  "departamento": "Salto",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "Rincón de Valentín",
+  "direccion": "Ruta 31 km 75, Rincón de Valentín, Salto",
+  "departamento": "Salto",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "43 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "ANCAP La Radial",
+  "direccion": "Ruta 1 km 66, Paraje La Radial, San José",
+  "departamento": "San José",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "30 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "ANCAP San José de Mayo - Ocampo",
+  "direccion": "Ruta 3 esquina Av. José Pedro Varela, San José de Mayo, San José",
+  "departamento": "San José",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "30 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "San José DC 1",
+  "direccion": "Emilio Frugoni esquina Ruta 11, San José de Mayo, San José",
+  "departamento": "San José",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "30 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "Libertad",
+  "direccion": "Maestro Víctor Banchero y Wilson Ferreira Aldunate, Libertad, San José",
+  "departamento": "San José",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "43 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "Ciudad Rodríguez",
+  "direccion": "Ciudad Rodriguez - Peaje Viejo, Ciudad Rodríguez, San José",
+  "departamento": "San José",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "1 conector (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "Plaza José Gervasio Artigas San José",
+  "direccion": "Asamblea entre Avda. Manuel Oribe y Monseñor Ricardo Di Martino, San José de Mayo, San José",
+  "departamento": "San José",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "43 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "ANCAP Ciudad del Plata",
+  "direccion": "Ruta 1 vieja km 31,800, Ciudad del Plata, San José",
+  "departamento": "San José",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "Ecilda Paullier",
+  "direccion": "Ruta 1 vieja esquina Ruta 11, Ecilda Paullier, San José",
+  "departamento": "San José",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "4 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "ANCAP José Enrique Rodó",
+  "direccion": "Ruta 2 Km. 208,500, José Enrique Rodó, Soriano",
+  "departamento": "Soriano",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "1 conector (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "ANCAP Dolores",
+  "direccion": "Ruta 21 esq. Perimetral Juan Manuel Blanes, Dolores, Soriano",
+  "departamento": "Soriano",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "43 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "Plaza Artigas - Mercedes",
+  "direccion": "Gral. José G. Artigas y Don Bosco, Mercedes, Soriano",
+  "departamento": "Soriano",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "ANCAP Mercedes",
+  "direccion": "Ruta 2 km 278,5, Mercedes, Soriano",
+  "departamento": "Soriano",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "43 kW", "conectores": "1 conector (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "ANCAP Paso de los Toros",
+  "direccion": "Ruta 5 km. 251,100, Paso de los Toros, Tacuarembó",
+  "departamento": "Tacuarembó",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "ANCAP Caraguatá",
+  "direccion": "Ruta 26 km 355, Caraguatá, Tacuarembó",
+  "departamento": "Tacuarembó",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "1 conector (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "CETEC Norte UTE - Paso de los Toros",
+  "direccion": "Atanasio Sierra y Manuel Oribe, Paso de los Toros, Tacuarembó",
+  "departamento": "Tacuarembó",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "ANCAP América Tacuarembó",
+  "direccion": "Av. Pablo Ríos y Juan Manuel Blanes, Tacuarembó, Tacuarembó",
+  "departamento": "Tacuarembó",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "ANCAP 18 de Julio - Tacuarembó",
+  "direccion": "18 de Julio y José Catalogne, Tacuarembó, Tacuarembó",
+  "departamento": "Tacuarembó",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "ANCAP Treinta y Tres",
+  "direccion": "Ruta 8 Km. 285,000, Treinta y Tres, Treinta y Tres",
+  "departamento": "Treinta y Tres",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "43 kW", "conectores": "1 conector (con cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "Policia Caminera Ruta 17",
+  "direccion": "Ruta 17 esq. Ruta 8, Treinta y tres, Treinta y Tres",
+  "departamento": "Treinta y Tres",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+},
+{
+  "nombre": "Vieja Usina UTE - Treinta y Tres",
+  "direccion": "Manuel Calleros y Las Tropas, Treinta y Tres, Treinta y Tres",
+  "departamento": "Treinta y Tres",
+  "cargadores": [
+    {"tipo": "CCS2", "potencia": "60 kW", "conectores": "2 conectores (con cable)", "precio_base": 121.9, "precio_kWh": 10.8}
+  ]
+},
+{
+  "nombre": "Municipio Vergara",
+  "direccion": "Jacinto Ruiz esq. Dionisio Coronel, Vergara, Treinta y Tres",
+  "departamento": "Treinta y Tres",
+  "cargadores": [
+    {"tipo": "Tipo 2", "potencia": "22 kW", "conectores": "2 conectores (sin cable)", "precio_base": 50.3, "precio_kWh": 9.5}
+  ]
+}
+]

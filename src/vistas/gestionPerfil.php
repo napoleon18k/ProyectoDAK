@@ -96,8 +96,8 @@ $foto    = $_SESSION['foto']    ?? "../assets/imagenes/user.jpg"; // Foto de per
       return;
     }
 
-    // Petición PUT a la API para actualizar datos
-    fetch('api/api.php', {
+    // Petición PUT a la API para actualizar datos en la DB
+    fetch('/src/api/api.php', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: `usuario=${encodeURIComponent(nuevoNombre)}&correo=${encodeURIComponent(nuevoCorreo)}&password=${encodeURIComponent(nuevoPassword)}`
@@ -105,7 +105,7 @@ $foto    = $_SESSION['foto']    ?? "../assets/imagenes/user.jpg"; // Foto de per
     .then(res => res.json())
     .then(data => {
       if(data.success) {
-        // Si la API responde bien → actualizamos en la vista
+        // ✅ Actualizamos la vista en pantalla
         nombreUsuarioEl.textContent = nuevoNombre;
         correoUsuarioEl.textContent = nuevoCorreo;
         passwordUsuarioEl.textContent = "********";
@@ -115,12 +115,18 @@ $foto    = $_SESSION['foto']    ?? "../assets/imagenes/user.jpg"; // Foto de per
 
         alert("Perfil actualizado correctamente.");
 
-        // (Opcional) Actualizar también la sesión en el servidor
-        fetch('api/actualizarSesion.php', {
+        // ✅ Y actualizamos también la sesión en el servidor
+        fetch('/src/api/actualizarSesion.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: `usuario=${encodeURIComponent(nuevoNombre)}&correo=${encodeURIComponent(nuevoCorreo)}`
-        });
+        })
+        .then(res => res.json())
+        .then(sessionData => {
+          console.log("Sesión actualizada:", sessionData);
+        })
+        .catch(err => console.error("Error actualizando la sesión:", err));
+
       } else {
         alert("Error al actualizar el perfil.");
       }
@@ -132,7 +138,7 @@ $foto    = $_SESSION['foto']    ?? "../assets/imagenes/user.jpg"; // Foto de per
   const eliminarBtn = document.getElementById('eliminarPerfilBtn');
   eliminarBtn.addEventListener('click', () => {
     if(confirm("¿Seguro que deseas eliminar tu cuenta?")) {
-      fetch('api/api.php', {
+      fetch('/src/api/api.php', {
         method: 'DELETE',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         // No mandamos ID porque la API identifica por sesión

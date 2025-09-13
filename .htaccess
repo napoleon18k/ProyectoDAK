@@ -1,4 +1,5 @@
-DirectoryIndex PrincipalCliente.html
+DirectoryIndex src/vistas/PrincipalCliente.html
+
 
 <IfModule mod_rewrite.c>
   RewriteEngine On

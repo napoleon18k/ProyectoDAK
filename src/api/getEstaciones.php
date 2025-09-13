@@ -16,7 +16,7 @@ try {
         $cargadoresArray = json_decode($est['cargadores'], true);
         $est['cargadores'] = $cargadoresArray;
 
-        // Crear un texto más legible
+        //  texto mas legible para depues ponerlo en el info de windows
         $texto = '';
         foreach ($cargadoresArray as $c) {
             $texto .= $c['conectores'] . ' ' . $c['tipo'] . ' - ' . $c['potencia'];
