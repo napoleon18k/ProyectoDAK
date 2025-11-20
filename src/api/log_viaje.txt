@@ -1,0 +1,56 @@
+SESSION: Array
+(
+    [usuario] => cliente
+    [rol] => cliente
+    [id_usuario] => 6
+)
+
+POST: {"id_vehiculo":4,"id_estacion":80}
+SESSION: Array
+(
+    [usuario] => cliente
+    [rol] => cliente
+    [id_usuario] => 6
+)
+
+POST: {"id_vehiculo":4,"id_estacion":80,"origen":"{\"lat\":-34.28913944109857,\"lng\":-56.20347364814877}","destino":"{\"lat\":-32.39107930992789,\"lng\":-56.29619879044581}"}
+SESSION: Array
+(
+    [usuario] => cliente
+    [rol] => cliente
+    [id_usuario] => 6
+)
+
+POST: {"id_vehiculo":4,"id_estacion":80,"origen":"Desconocido","destino":"Desconocido"}
+SESSION: Array
+(
+    [usuario] => cliente
+    [rol] => cliente
+    [id_usuario] => 6
+)
+
+POST: {"id_vehiculo":4,"id_estacion":80,"origen":"Desconocido","destino":"Desconocido"}
+SESSION: Array
+(
+    [usuario] => cliente
+    [rol] => cliente
+    [id_usuario] => 6
+)
+
+POST: {"id_vehiculo":4,"id_estacion":80,"origen":"Desconocido","destino":"Desconocido"}
+SESSION: Array
+(
+    [usuario] => cliente
+    [rol] => cliente
+    [id_usuario] => 6
+)
+
+POST: {"id_vehiculo":4,"id_estacion":80,"origen":"Las Piedras","destino":"Desconocido"}
+SESSION: Array
+(
+    [usuario] => cliente
+    [rol] => cliente
+    [id_usuario] => 6
+)
+
+POST: {"id_vehiculo":4,"estaciones":[{"id_estacion":80,"orden":1},{"id_estacion":168,"orden":2}],"origen":"Departamento de Canelones","destino":"Desconocido"}
