@@ -1,0 +1,53 @@
+/* Estilos básicos para la página de viaje del cliente */
+body {
+  background: #222;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #333;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px #0006;
+  padding: 32px 24px 24px 24px;
+}
+.select-vehiculo {
+  margin-bottom: 24px;
+}
+#map {
+  width: 100%;       /* ancho completo del contenedor */
+  height: 600px;     /* alto deseado, podés ajustar a 700px o más */
+  margin-top: 16px;
+  border: 1px solid #ccc; /* opcional, para que se note */
+}
+
+.botones {
+  margin-bottom: 24px;
+}
+button {
+  font-size: 1rem;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:hover {
+  background: #0056b3;
+}
+#resultado {
+  background: #222;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 12px;
+  color: #fff;
+}
+#infoClick {
+  color: #ffd700;
+  font-size: 1.1em;
+}

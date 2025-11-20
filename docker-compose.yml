@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    ports:
+      - "${WEB_PORT}:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}   # root
+      MYSQL_DATABASE: ${MYSQL_DATABASE}             # DAKdb
+      MYSQL_USER: ${MYSQL_USER}                     # pocholo
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}             # root
+    ports:
+      - "${DB_PORT}:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      
+      - ./DAKdb.sql:/docker-entrypoint-initdb.d/DAKdb.sql 
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "${PHPMYADMIN_PORT}:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root                    
+      PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    depends_on:
+      - db
+
+volumes:
+  db_data:

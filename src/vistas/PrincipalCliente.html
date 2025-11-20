@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Cliente</title>
+    <link rel="stylesheet" href="../assets/css/cliente.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="logo-container">
+            <img src="../assets/imagenes/logoPrincipal.jpg" alt="Logo de la Página">
+        </div>
+
+        <div class="button-wrapper">
+            <button id="btnMapa">Estaciones de carga</button>
+            <div class="msg-alert" id="msgMapa"></div>
+        </div>
+
+        <div class="button-wrapper">
+            <button id="btnPlanificar">Planificar viajes</button>
+            <div class="msg-alert" id="msgPlanificar"></div>
+        </div>
+
+        <div class="button-wrapper">
+            <button id="btnVehiculos">Mis vehículos</button>
+            <div class="msg-alert" id="msgVehiculos"></div>
+        </div>
+
+        <div class="idiomas">
+            <span>ES</span><span class="separador">|</span><span>EN</span>
+        </div>
+
+        <img src="../assets/imagenes/user.jpg" alt="Perfil" class="profile-img" id="profileBtn">
+    </div>
+
+    <div class="main-content">
+        <img src="../assets/imagenes/ruleta.png" class="ruleta-img" alt="Ruleta" id="ruleta">
+        <div class="ruleta-ball" id="ruletaBall"></div> 
+        <img src="../assets/imagenes/cargaya.png" class="btn-carga-ya-img fixed-bottom-right" alt="Carga Ya!" id="btnCargaYa">
+    </div>
+
+    <div id="resultado-ruleta"></div>
+
+    <!-- PANEL DE USUARIO -->
+    <div id="userPanel" style="display:none;">
+        <div class="user-info">
+            <div class="user-datos">
+                <p id="nombreUsuario"></p>
+                <p id="correoUsuario"></p>
+                <p id="rolUsuario"></p>
+            </div>
+            <a href="gestionPerfil.php" id="modificarPerfilLink">Modificar perfil</a>
+        </div>
+
+        <div class="user-images">
+            <img src="../assets/imagenes/viajes.jpg" class="user-img" id="historialViajesImg" style="cursor:pointer;">
+            <img src="../assets/imagenes/pagos.jpg" class="user-img">
+        </div>
+
+        <button id="cerrarSesionBtn">Cerrar sesión</button>
+    </div>
+
+    <!-- SCRIPT (ya sin mapas ni reservas) -->
+    <script>
+        /* ---------------- CHECK SESSION ---------------- */
+
+        const profileBtn = document.getElementById('profileBtn');
+        let tooltip = document.createElement('div');
+        tooltip.className = 'profile-tooltip';
+        document.body.appendChild(tooltip);
+
+        function mostrarTooltip(texto) {
+            const rect = profileBtn.getBoundingClientRect();
+            tooltip.textContent = texto;
+            tooltip.style.left = rect.left + rect.width/2 - tooltip.offsetWidth/2 + "px";
+            tooltip.style.top = rect.bottom + 5 + "px";
+            tooltip.style.opacity = 1;
+        }
+
+        function ocultarTooltip() {
+            tooltip.style.opacity = 0;
+        }
+
+        fetch('../api/check_session.php')
+        .then(res => res.json())
+        .then(data => {
+            const userPanel = document.getElementById('userPanel');
+
+            if (!data.loggedIn) {
+                profileBtn.addEventListener('click', () => location.href = 'login.html');
+                profileBtn.addEventListener('mouseover', () => mostrarTooltip('Login'));
+                profileBtn.addEventListener('mouseout', ocultarTooltip);
+
+                document.getElementById('btnMapa').addEventListener('click', () =>
+                    mostrarMensaje('msgMapa','⚠️ Debes iniciar sesión')
+                );
+                document.getElementById('btnPlanificar').addEventListener('click', () =>
+                    mostrarMensaje('msgPlanificar','⚠️ Debes iniciar sesión')
+                );
+                document.getElementById('btnVehiculos').addEventListener('click', () =>
+                    mostrarMensaje('msgVehiculos','⚠️ Debes iniciar sesión')
+                );
+            } else {
+                nombreUsuario.textContent = `Usuario: ${data.usuario}`;
+                correoUsuario.textContent = `Correo: ${data.correo}`;
+                rolUsuario.textContent = `Rol: ${data.rol}`;
+
+                profileBtn.addEventListener('click', () => {
+                    userPanel.style.display =
+                        userPanel.style.display === 'none' ? 'block' : 'none';
+                });
+
+                profileBtn.addEventListener('mouseover', () => mostrarTooltip('Perfil'));
+                profileBtn.addEventListener('mouseout', ocultarTooltip);
+
+                document.getElementById('cerrarSesionBtn').addEventListener('click', () => {
+                    fetch('../api/logout.php').then(() => location.reload());
+                });
+
+                document.getElementById('modificarPerfilLink').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    location.href = 'gestionPerfil.php';
+                });
+
+                document.getElementById('btnMapa').addEventListener('click', () => {
+                    location.href = 'estaciones.php';  // ⬅️ ahora redirige correctamente
+                });
+
+                document.getElementById('btnPlanificar').addEventListener('click', () => {
+                    location.href = 'viajeCliente.php';
+                });
+
+                document.getElementById('btnVehiculos').addEventListener('click', () => {
+                    location.href = 'gestionVehiculoscliente.php';
+                });
+
+                document.getElementById('historialViajesImg').addEventListener('click', () => {
+                    location.href = 'historialViajes.php';
+                });
+            }
+        });
+
+        function mostrarMensaje(idMsg, texto) {
+            const msgDiv = document.getElementById(idMsg);
+            msgDiv.textContent = texto;
+            msgDiv.style.opacity = 1;
+            setTimeout(() => msgDiv.style.opacity = 0, 3000);
+        }
+
+        /* ---------------- RULETA (SIN CAMBIOS) ---------------- */
+        const ruleta = document.getElementById('ruleta');
+        const btnCargaYa = document.getElementById('btnCargaYa');
+        const resultadoRuleta = document.getElementById('resultado-ruleta');
+        const ruletaBall = document.getElementById('ruletaBall');
+
+        const estacionesDeCarga = [
+            { nombre: "Estación Shell Malvín (Premio Mayor 🥇)", sector: "Montevideo" },
+            { nombre: "Estación ANCAP Punta del Este (Carga Rápida)", sector: "Maldonado" },
+            { nombre: "Cargador Rápido Colonia (Carga Gratuita)", sector: "Colonia" },
+            { nombre: "Punto de Carga Salto Grande (Batería al 100%)", sector: "Salto" },
+            { nombre: "Estación Móvil Ruta 5 (Descuento del 50%)", sector: "Durazno" },
+            { nombre: "Estación de Servicio Rocha", sector: "Rocha" },
+            { nombre: "Punto de Recarga Artigas", sector: "Artigas" },
+        ];
+
+        let isSpinning = true;
+
+        function startSpinning() {
+            isSpinning = true;
+            ruleta.classList.remove('detenida');
+            ruletaBall.classList.remove('animando');
+            ruletaBall.style.opacity = 0;
+        }
+
+        window.addEventListener('load', startSpinning);
+
+        function detenerRuleta() {
+            if (!isSpinning) return;
+
+            isSpinning = false;
+            btnCargaYa.style.pointerEvents = 'none';
+
+            ruletaBall.style.opacity = 1;
+            ruletaBall.classList.add('animando');
+
+            ruleta.classList.add('detenida');
+            const angulo = Math.floor(Math.random() * 360);
+            ruleta.style.transform = `rotate(${angulo + 1440}deg)`;
+
+            setTimeout(() => {
+                const premio = estacionesDeCarga[Math.floor(Math.random() * estacionesDeCarga.length)];
+                resultadoRuleta.innerHTML = `
+                    🎉 ¡FELICIDADES! GANASTE 🎉<br><br>
+                    Estación: <span>${premio.nombre}</span><br>
+                    Ubicación: ${premio.sector}
+                `;
+                resultadoRuleta.style.display = 'block';
+
+                setTimeout(() => {
+                    resultadoRuleta.style.display = 'none';
+                    reiniciarRuleta();
+                }, 6000);
+
+            }, 5000);
+        }
+
+        function reiniciarRuleta() {
+            ruletaBall.style.opacity = 0;
+            ruletaBall.classList.remove('animando');
+
+            ruleta.style.transition = 'none';
+            ruleta.style.transform = 'rotate(0deg)';
+
+            setTimeout(() => {
+                ruleta.style.transition = 'transform 6s';
+                btnCargaYa.style.pointerEvents = 'auto';
+                startSpinning();
+            }, 50);
+        }
+
+        btnCargaYa.addEventListener('click', detenerRuleta);
+    </script>
+
+</body>
+</html>
